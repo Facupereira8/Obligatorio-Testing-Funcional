@@ -42,11 +42,17 @@ test('Checkout completo con producto', async ({ page }) => {
     await houseNumber.fill('');
     await houseNumber.type('8');
 
-    await expect(houseNumber).toHaveValue('8');
+   await page.locator('[data-test="postal_code"]').fill('15000');
+await page.locator('[data-test="house_number"]').fill('8');
+await page.locator('[data-test="street"]').fill('Calle 1');
+await page.locator('[data-test="city"]').fill('Montevideo');
+await page.locator('[data-test="state"]').fill('Montevideo');
 
-    // 10. Continuar al pago
-    await page.locator('[data-test="proceed-3"]').click();
+await expect(page.locator('[data-test="proceed-3"]')).toBeEnabled();
 
+await page.locator('[data-test="proceed-3"]').click();
+
+ 
     // 11. Seleccionar método de pago
     await page.locator('[data-test="payment-method"]')
         .selectOption('buy-now-pay-later');

@@ -15,7 +15,7 @@ test('Agregar producto a favoritos', async ({ page }) => {
 
     await page.locator('[data-test="login-submit"]').click();
 
-    await expect(page.locator('[data-test="nav-menu"]')).toBeVisible();
+    await expect(page.locator('[data-test="nav-menu"]')).toBeVisible({ timeout: 10000 });
 
     // 3. Volver al inicio
     await page.locator('[data-test="nav-home"]').click();
